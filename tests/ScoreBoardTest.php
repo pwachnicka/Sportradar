@@ -91,21 +91,18 @@ class ScoreBoardTest extends TestCase
         $homeTeamScore = 1;
         $awayTeamScore = 0;
 
-        /** @var HomeTeam&MockObject $homeTeamMock  */
-        $homeTeamMock = $this->createMock(HomeTeam::class);
-        $homeTeamMock
-            ->expects($this->never())
-            ->method('setScore');
-
-        /** @var AwayTeam&MockObject $awayTeamMock  */
-        $awayTeamMock = $this->createMock(AwayTeam::class);
-        $awayTeamMock
-            ->expects($this->never())
-            ->method('setScore');
-
         $scoreBoard = new ScoreBoard();
         $this->expectException(ScoreBoardException::class);
         $this->expectExceptionMessage('Function update should not be called without start');
         $scoreBoard->update($homeTeamScore, $awayTeamScore);
+    }
+
+    public function test_should_throw_exception_when_finish_is_called_without_start()
+    {
+        $scoreBoard = new ScoreBoard();
+
+        $this->expectException(ScoreBoardException::class);
+        $this->expectExceptionMessage('Function finish should not be called without start');
+        $scoreBoard->finish();
     }
 }
