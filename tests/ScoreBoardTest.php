@@ -94,16 +94,14 @@ class ScoreBoardTest extends TestCase
         /** @var HomeTeam&MockObject $homeTeamMock  */
         $homeTeamMock = $this->createMock(HomeTeam::class);
         $homeTeamMock
-            ->expects($this->once())
-            ->method('setScore')
-            ->with($this->equalTo(0));
+            ->expects($this->never())
+            ->method('setScore');
 
         /** @var AwayTeam&MockObject $awayTeamMock  */
         $awayTeamMock = $this->createMock(AwayTeam::class);
         $awayTeamMock
-            ->expects($this->once())
-            ->method('setScore')
-            ->with($this->equalTo(0));
+            ->expects($this->never())
+            ->method('setScore');
 
         $scoreBoard = new ScoreBoard();
         $this->expectException(ScoreBoardException::class);
