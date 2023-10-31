@@ -29,6 +29,10 @@ abstract class AbstractTeam
             throw new ScoreException('Score should not be less than previous one');
         }
 
+        if (($score - $this->score) > 1) {
+            throw new ScoreException('Score should not be greater by more than one than previous score');
+        }
+
         $this->score = $score;
     }
 
