@@ -3,7 +3,6 @@
 namespace Sportradar;
 
 use Sportradar\Exception\ScoreBoardException;
-use Sportradar\Exception\ScoreException;
 use Sportradar\Team\HomeTeam;
 use Sportradar\Team\AwayTeam;
 
@@ -36,7 +35,12 @@ class ScoreBoard
 
     public function finish(): void
     {
-        // this function will finish the game and clear the scoreboard
+        if ($this->isGameRunning() === false) {
+            throw new ScoreBoardException('Function finish should not be called without start');
+        }
+
+        $this->homeTeam = null;
+        $this->awayTeam = null;
     }
 
     private function isGameRunning(): bool
