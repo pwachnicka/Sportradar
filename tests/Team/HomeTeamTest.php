@@ -16,6 +16,13 @@ class HomeTeamTest extends TestCase
         $this->assertEquals($expectedTeamName, $homeTeam->getTeamName());
     }
 
+    public function test_should_return_null_when_score_is_not_provided()
+    {
+        $homeTeam = new HomeTeam('TestTeam');
+
+        $this->assertNull($homeTeam->getScore());
+    }
+
     public function test_should_return_correct_score_when_numeric_score_is_provided()
     {
         $expectedScore = 5;

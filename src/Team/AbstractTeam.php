@@ -2,10 +2,12 @@
 
 namespace Sportradar\Team;
 
+use Sportradar\Exception\ScoreException;
+
 abstract class AbstractTeam
 {
     protected string $teamName;
-    protected int $score;
+    protected ?int $score = null;
 
     public function __construct(string $teamName)
     {
@@ -19,10 +21,18 @@ abstract class AbstractTeam
 
     public function setScore(int $score): void
     {
+        if ($score < 0) {
+            throw new ScoreException('Score should not be negative');
+        }
+
+        if ($score < $this->score) {
+            throw new ScoreException('Score should not be less than previous one');
+        }
+
         $this->score = $score;
     }
 
-    public function getScore(): int
+    public function getScore(): ?int
     {
         return $this->score;
     }
