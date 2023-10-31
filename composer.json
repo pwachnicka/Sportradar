@@ -1,5 +1,8 @@
 {
     "autoload": {
-        "psr-4": {"Sportradar\\": "src/"}
+        "psr-4": {"Sportradar\\": "src/", "SportradarTest\\": "test/"}
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.4"
     }
 }
