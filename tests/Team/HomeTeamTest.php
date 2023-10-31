@@ -25,7 +25,7 @@ class HomeTeamTest extends TestCase
 
     public function test_should_return_correct_score_when_numeric_score_is_provided()
     {
-        $expectedScore = 5;
+        $expectedScore = 1;
         $homeTeam = new HomeTeam('TestTeam');
         $homeTeam->setScore($expectedScore);
 
@@ -44,13 +44,25 @@ class HomeTeamTest extends TestCase
 
     public function test_should_throw_exception_when_provided_score_is_less_than_previous_one()
     {
-        $firstScore = 3;
-        $nextScore = 2;
+        $firstScore = 1;
+        $nextScore = 0;
 
         $homeTeam = new HomeTeam('TestTeam');
         $homeTeam->setScore($firstScore);
         $this->expectException(ScoreException::class);
         $this->expectExceptionMessage('Score should not be less than previous one');
+        $homeTeam->setScore($nextScore);
+    }
+
+    public function test_should_throw_exception_when_provided_score_is_greater_by_more_than_one_than_previous_one()
+    {
+        $firstScore = 1;
+        $nextScore = 3;
+
+        $homeTeam = new HomeTeam('TestTeam');
+        $homeTeam->setScore($firstScore);
+        $this->expectException(ScoreException::class);
+        $this->expectExceptionMessage('Score should not be greater by more than one than previous score');
         $homeTeam->setScore($nextScore);
     }
 }
