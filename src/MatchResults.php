@@ -15,18 +15,9 @@ class MatchResults extends ArrayObject
 
     public function getSummary(): array
     {
-        $this->uksort(function ($matchKey1, $matchKey2) {
-            $sumMatch1 = $this[$matchKey1][0]->getScore() + $this[$matchKey1][1]->getScore();
-            $sumMatch2 = $this[$matchKey2][0]->getScore() + $this[$matchKey2][1]->getScore();
-
-            if ($sumMatch1 === $sumMatch2) {
-                return $matchKey1 > $matchKey2 ? -1 : 1;
-            }
-
-            return $sumMatch1 > $sumMatch2 ? -1 : 1;
-        });
-
         $summary = [];
+
+        $this->sortResults();
 
         foreach ($this as $singleResult) {
             $summary[] = [
@@ -36,5 +27,22 @@ class MatchResults extends ArrayObject
         }
 
         return $summary;
+    }
+
+    private function sortResults(): void
+    {
+        $this->uksort(function ($matchKey1, $matchKey2) {
+            $match1 = $this[$matchKey1];
+            $match2 = $this[$matchKey2];
+
+            $sumResultMatch1 = $match1[0]->getScore() + $match1[1]->getScore();
+            $sumResultMatch2 = $match2[0]->getScore() + $match2[1]->getScore();
+
+            if ($sumResultMatch1 === $sumResultMatch2) {
+                return $matchKey1 > $matchKey2 ? -1 : 1;
+            }
+
+            return $sumResultMatch1 > $sumResultMatch2 ? -1 : 1;
+        });
     }
 }
