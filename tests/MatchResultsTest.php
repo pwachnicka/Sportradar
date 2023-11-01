@@ -35,7 +35,6 @@ class MatchResultsTest extends TestCase
                         'Canada' => 5,
                     ]
                 ]
-
             ],
             'two elements with the same results' => [
                 'result' => [
@@ -58,7 +57,6 @@ class MatchResultsTest extends TestCase
                         'Canada' => 5,
                     ]
                 ]
-
             ],
             'three elements with different results' => [
                 'result' => [
@@ -89,7 +87,6 @@ class MatchResultsTest extends TestCase
                         'Canada' => 5,
                     ]
                 ]
-
             ],
             'three elements with the same results' => [
                 'result' => [
@@ -120,7 +117,6 @@ class MatchResultsTest extends TestCase
                         'Canada' => 2,
                     ]
                 ]
-
             ]
         ];
     }
