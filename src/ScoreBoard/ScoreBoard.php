@@ -1,14 +1,13 @@
 <?php
 
-namespace Sportradar;
+namespace Sportradar\ScoreBoard;
 
 use Sportradar\Exception\ScoreBoardException;
 use Sportradar\Team\HomeTeam;
 use Sportradar\Team\AwayTeam;
 
-class ScoreBoard
+class ScoreBoard implements ScoreBoardInterface
 {
-    private const INITIAL_SCORE = 0;
     private ?HomeTeam $homeTeam;
     private ?AwayTeam $awayTeam;
 

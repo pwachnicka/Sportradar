@@ -1,12 +1,12 @@
 <?php
 
-namespace SportradarTest;
+namespace SportradarTest\ScoreBoard;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use SEEC\PhpUnit\Helper\ConsecutiveParams;
 use Sportradar\Exception\ScoreBoardException;
-use Sportradar\ScoreBoard;
+use Sportradar\ScoreBoard\ScoreBoard;
 use Sportradar\Team\AwayTeam;
 use Sportradar\Team\HomeTeam;
 
